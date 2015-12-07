@@ -1,0 +1,53 @@
+body {
+	background-color: #5BB2DE;
+}
+
+h1 {
+	font-size: 32pt;
+	text-align: center;
+	color: white;
+}
+
+h2 {
+	color: white;
+}
+
+.following{
+	text-align: right;
+}
+
+div {
+	border-radius: 6px;
+	margin: 3px 0px 3px 0px;
+	padding: 1px;
+	font-size: 12pt;
+}
+
+.tweet {
+	border: 1px solid black;
+	background-color: #AAADAD;
+}
+
+div .tweetUser, .tweetMessage, .tweetTime {
+	background-color: #FEFEFE;
+	padding: 3px;
+}
+
+div .tweetUser {
+	text-align: left;
+	font-weight: bold;
+}
+
+div .tweetTime {
+	text-align: right;
+}
+
+div .tweetTimeline {
+	display: none;
+	text-align: right;
+}
+
+#refresh{
+	display: inline-block;
+	text-align: right;
+}
