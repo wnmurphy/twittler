@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  
+
   <head>
     <title>Twittler!</title>
 
@@ -12,11 +12,11 @@
 
   <body>
     <script>
-  
-      $(document).ready(function(){
+
+      $(document).ready(function () {
 
         var $body = $('body');
-        
+
         $body.html('');
 
         var $title = $('<h1>Twittler!</h1>').appendTo($body);
@@ -24,19 +24,20 @@
         var $followHeading = $('<h2>following:</h2>').appendTo($body);
 
         var subscriptions = users.join(' | ');
+
         var $following = $('<div class="following"></div>').text(subscriptions).appendTo($body);
 
         var $tweetHeading = $('<h2>dem tweets:</h2>').appendTo($body);
 
-        var $refreshButton = $('<button id="refresh">Refresh dem tweets.</button>').appendTo($body).click(function(){
+        var $refreshButton = $('<button id="refresh">Refresh dem tweets.</button>').appendTo($body).click(function () {
           updateTweets();
         });
 
         var index = 0;
-        function updateTweets(){
-          
+        function updateTweets () {
+
           //while index counts down
-          while(index < streams.home.length){
+          while (index < streams.home.length) {
 
             //current tweet
             var tweet = streams.home[index];
@@ -55,20 +56,22 @@
 
             //convert to ISO 8061 for timeago
             var isoTime = tweet.created_at.toISOString();
-            
-            //Create and populate timestamp div, convert JS time to ISO and add as title for timeago, and append to div of current tweet          
+
+            //Create and populate timestamp div, convert JS time to ISO and add as title for timeago, and append to div of current tweet
             var $tweetTime = $('<div class="tweetTime timeago"></div>').prop('title', isoTime).text(tweet.created_at).appendTo($tweet);
 
             // Retrieve and render timeline
             var timeline = '';
             var arr = [];
-            function getTimeline(){
-              for(var username in streams.users){
-                streams.users[username].map(function(x){
+            function getTimeline () {
+              for (var username in streams.users) {
+                streams.users[username].map(function (x) {
                   arr.push(x);
                 });
               }
-              arr = arr.map(function(x){return x.created_at;});
+              arr = arr.map(function (x) {
+                return x.created_at;
+              });
               timeline += arr.join(' | ');
             }
             getTimeline();
@@ -80,7 +83,7 @@
 
             //increment counter
             index++;
-            
+
           } //end of while
 
           // Toggle timeline div when user clicks on tweet username, unbind first to prevent recursive accumulation of event handlers to prevent bad toggle behavior
@@ -90,9 +93,9 @@
           });
 
           // Recursively call updateTweets to capture incoming tweets
-          setTimeout(function(){
+          setTimeout(function () {
             updateTweets();
-          }, 15000);        
+          }, 15000);
 
         } //end of updateTweets
         updateTweets();
